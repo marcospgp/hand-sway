@@ -56,7 +56,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.05
   far clip plane: 1000
   field of view: 80
   orthographic: 0
@@ -144,7 +144,7 @@ Transform:
   m_GameObject: {fileID: 5578011487886355941}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 0.7, y: 1, z: 0.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5578011488046956062}
   m_RootOrder: 1
@@ -164,7 +164,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5578011487886355941}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -208,7 +208,7 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: bde29a3dc85e2594ebadd74ce588066e, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.25
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -222,6 +222,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5578011488046956062}
   - component: {fileID: 5578011488046956063}
+  - component: {fileID: 8873872771129824466}
   - component: {fileID: 5578011488046956056}
   m_Layer: 6
   m_Name: Player
@@ -262,6 +263,20 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &8873872771129824466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5578011488046956057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4c2f1da33d9f6744a4c1b42c8a40d9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lookSensitivity: 6
+  inputActions: {fileID: -944628639613478452, guid: a62893f30e9d34745b0bfcd6885a8140, type: 3}
 --- !u!114 &5578011488046956056
 MonoBehaviour:
   m_ObjectHideFlags: 0

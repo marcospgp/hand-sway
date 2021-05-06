@@ -11,12 +11,6 @@ public class GunSounds : MonoBehaviour {
     [SerializeField]
     private AudioClip gunshotClip;
 
-    [SerializeField]
-    private float reloadVolume = 0.4f;
-
-    [SerializeField]
-    private AudioClip reloadClip;
-
     private AudioSource audioSource;
 
     public void Awake() {
@@ -29,9 +23,5 @@ public class GunSounds : MonoBehaviour {
 
     public void Shoot() {
         audioSource.PlayOneShot(gunshotClip, gunshotVolume);
-    }
-
-    public void Reload() {
-        audioSource.PlayOneShot(reloadClip, reloadVolume);
     }
 }

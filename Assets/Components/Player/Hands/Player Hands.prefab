@@ -32,7 +32,6 @@ Transform:
   - {fileID: 3040196635417763574}
   - {fileID: 2492050036397491855}
   - {fileID: 4366961768444271965}
-  - {fileID: 3065756617516447136}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -67,42 +66,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cd54152474927f4b8dbc30e5b738b8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraDeltaToSwayRatio: 0.75
-  swaySpringForce: 250
+  cameraFollowStrength: 0.75
+  springForce: 250
   swayDrag: 20
   gunshotParticles: {fileID: 2331631969662921863}
   inputActions: {fileID: -944628639613478452, guid: a62893f30e9d34745b0bfcd6885a8140, type: 3}
+  playerMovement: {fileID: 0}
   playerCamera: {fileID: 0}
---- !u!1 &5576829278544571526
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3065756617516447136}
-  m_Layer: 0
-  m_Name: Aim Target For Character IK
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3065756617516447136
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5576829278544571526}
-  m_LocalRotation: {x: 0.00000008940697, y: 0.0000003427267, z: -0.00000008940697, w: -1}
-  m_LocalPosition: {x: 0, y: 0, z: 10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 7742356573666983759}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2493510971854535947
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -128,7 +98,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4276316217375620, guid: 49aa1d4c5624e66418cbfbe9784d6f23, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.3488
+      value: 0.3713
       objectReference: {fileID: 0}
     - target: {fileID: 4276316217375620, guid: 49aa1d4c5624e66418cbfbe9784d6f23, type: 3}
       propertyPath: m_LocalRotation.w
@@ -199,11 +169,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 864458b8a1b9c4240af61b4b1e843a5f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.34
+      value: -1.35
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 864458b8a1b9c4240af61b4b1e843a5f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.217
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 864458b8a1b9c4240af61b4b1e843a5f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -330,7 +300,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2132315121514472174, guid: 6bc0b35efe750ee48b6785ec0619d407, type: 3}
       propertyPath: m_Name
-      value: Gun Sounds 2D
+      value: Gun Sounds
       objectReference: {fileID: 0}
     - target: {fileID: 8851849025215919280, guid: 6bc0b35efe750ee48b6785ec0619d407, type: 3}
       propertyPath: m_LocalPosition.x

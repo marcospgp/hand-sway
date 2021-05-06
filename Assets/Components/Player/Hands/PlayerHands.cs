@@ -5,9 +5,15 @@ using UnityEngine.InputSystem;
 
 [DisallowMultipleComponent]
 public class PlayerHands : MonoBehaviour {
+
+    [Header("Sway Settings")]
+
     [SerializeField]
+    [Tooltip(
+        "How strongly the hands are pulled along when the camera rotates."
+    )]
     [Range(0f, 1f)]
-    private float cameraDeltaToSwayRatio = 0.9f;
+    private float cameraFollowStrength = 0.75f;
 
     [SerializeField]
     [Tooltip(
@@ -15,12 +21,12 @@ public class PlayerHands : MonoBehaviour {
         "orientation. This is multiplied by the angle between these two."
     )]
     [Range(0f, 300f)]
-    private float swaySpringForce = 150f;
+    private float springForce = 250f;
 
     [SerializeField]
-    [Tooltip("Sway attenuation.")]
+    [Tooltip("How quickly the hands lose their inertia.")]
     [Range(1f, 50f)]
-    private float swayDrag = 35f;
+    private float swayDrag = 20f;
 
     [SerializeField]
     private ParticleSystem gunshotParticles;
@@ -29,6 +35,9 @@ public class PlayerHands : MonoBehaviour {
 
     [SerializeField]
     private InputActionAsset inputActions;
+
+    [SerializeField]
+    private PlayerMovement playerMovement;
 
     [SerializeField]
     private Transform playerCamera;
@@ -40,7 +49,6 @@ public class PlayerHands : MonoBehaviour {
     private Animator animator;
     private Vector3 angularVelocity = Vector3.zero;
     private Quaternion lastCameraRotation;
-    private PlayerMovement playerMovement;
 
     public void Start() {
         gunSounds = GetComponentInChildren<GunSounds>();
@@ -53,12 +61,6 @@ public class PlayerHands : MonoBehaviour {
 
         if (animator == null) {
             throw new System.Exception("Missing Animator component.");
-        }
-
-        playerMovement = GetComponent<PlayerMovement>();
-
-        if (playerMovement == null) {
-            throw new System.Exception("Missing PlayerMovement component.");
         }
 
         // Input
@@ -127,7 +129,7 @@ public class PlayerHands : MonoBehaviour {
         transform.rotation = Quaternion.Slerp(
             transform.rotation,
             transform.rotation * cameraDeltaRotation,
-            cameraDeltaToSwayRatio
+            cameraFollowStrength
         );
 
         // Rotate hands towards camera orientation
@@ -145,7 +147,7 @@ public class PlayerHands : MonoBehaviour {
             playerCamera.rotation
         );
 
-        float acceleration = swaySpringForce * angle;
+        float acceleration = springForce * angle;
 
         angularVelocity +=
             // Ensure delta rotation is in world space
