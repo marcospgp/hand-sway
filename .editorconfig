@@ -1,0 +1,23 @@
+root=true
+
+[*.cs]
+
+# Make field readonly (IDE0044)
+# (conflicts with using [SerializeField] on private fields to expose them to the
+# Unity inspector)
+dotnet_diagnostic.IDE0044.severity = none
+
+# Simplify new expression (IDE0090)
+# (only available starting with C# 9.0, Unity currently supports 8.0)
+dotnet_diagnostic.IDE0090.severity = none
+
+# Always have parenthesis in mathematical expressions for clarity
+# https://docs.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/ide0047-ide0048
+dotnet_style_parentheses_in_arithmetic_binary_operators = always_for_clarity
+# lline above is not currently working for some reason, so disable entirely:
+dotnet_diagnostic.IDE0047.severity = none
+
+# Use throw expression (IDE0016)
+# https://docs.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/ide0016
+# Can't use ?? with Unity due to custom equality operator implementation
+dotnet_diagnostic.IDE0016.severity = none
