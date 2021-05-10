@@ -13,13 +13,17 @@ public class PlayerLook : MonoBehaviour {
     [Header("References")]
 
     [SerializeField]
+    new private Transform camera;
+
+    [SerializeField]
     [Tooltip("The input action asset used to control the game character.")]
     private InputActionAsset inputActions;
 
     private InputActionMap looking;
     private InputAction lookInput;
-    private Vector3 cameraEulerAngles = Vector3.zero;
     private Quaternion initialCameraRotation = Quaternion.identity;
+    private float verticalAngle = 0f;
+    private float horizontalAngle = 0f;
 
     public void Awake() {
         LockCursor();
@@ -39,23 +43,22 @@ public class PlayerLook : MonoBehaviour {
     private void UpdateCameraRotation() {
         Vector2 mouseDelta = lookInput.ReadValue<Vector2>();
 
-        transform.rotation = initialCameraRotation;
-
         float horizontalDelta = mouseDelta.x * lookSensitivity * 0.01f;
         float verticalDelta = -1 * mouseDelta.y * lookSensitivity * 0.01f;
 
-        cameraEulerAngles.x += verticalDelta;
-        cameraEulerAngles.x = Mathf.Clamp(cameraEulerAngles.x, -90f, 90f);
+        verticalAngle += verticalDelta;
+        verticalAngle = Mathf.Clamp(verticalAngle, -90f, 90f);
 
-        cameraEulerAngles.y += horizontalDelta;
+        horizontalAngle += horizontalDelta;
 
-        if (cameraEulerAngles.y > 360f) {
-            cameraEulerAngles.y -= 360f;
-        } else if (cameraEulerAngles.y < 360f) {
-            cameraEulerAngles.y += 360f;
+        if (horizontalAngle > 360f) {
+            horizontalAngle -= 360f;
+        } else if (horizontalAngle < 360f) {
+            horizontalAngle += 360f;
         }
 
-        transform.Rotate(cameraEulerAngles, Space.Self);
+        camera.localRotation = Quaternion.Euler(verticalAngle, 0f, 0f);
+        transform.localRotation = Quaternion.Euler(0f, horizontalAngle, 0f);
     }
 
     private void LockCursor() {
