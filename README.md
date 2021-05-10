@@ -3,4 +3,4 @@
  
  Unity Editor version: 2020.3.7f1
  
- Tutorial available for free on Patreon: [https://www.patreon.com/posts/51083982]
+ Tutorial available for free on Patreon: https://www.patreon.com/posts/51083982
