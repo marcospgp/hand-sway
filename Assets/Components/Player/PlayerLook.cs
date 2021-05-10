@@ -53,7 +53,7 @@ public class PlayerLook : MonoBehaviour {
 
         if (horizontalAngle > 360f) {
             horizontalAngle -= 360f;
-        } else if (horizontalAngle < 360f) {
+        } else if (horizontalAngle < -360f) {
             horizontalAngle += 360f;
         }
 
